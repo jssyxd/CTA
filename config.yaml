@@ -1,0 +1,48 @@
+# Configuration for CTA Quantitative System
+data:
+  raw_lake: "W:/database/01_raw_lake/cryptohftdata"
+  governed_lake: "W:/database/02_governed_lake/crypto_hft"
+  features_lake: "W:/database/03_features"
+  target_symbols:
+    - "BTC-USDT-SWAP"
+    - "ETH-USDT-SWAP"
+    - "SOL-USDT-SWAP"
+    - "PAXG-USDT-SWAP"
+    - "WOO-USDT-SWAP"
+
+governance:
+  invariants:
+    - strict_monotonic_timestamp
+    - zero_duplicates
+    - geometric_high_low_validity
+    - positive_prices
+    - non_negative_volume
+  timestamp_shift:
+    from_mode: "left_open"
+    to_mode: "right_close"
+
+model:
+  timeframe: "15m"
+  window_bars: 120
+  features:
+    - momentum_64
+    - daily_mom5
+    - daily_mom20
+    - daily_mom60
+    - daily_mom120
+    - daily_eff20
+    - daily_price_oi
+    - product_id
+    - crypto_carry_funding
+    - funding_rate_change
+    - relative_to_main_oi
+    - time_to_funding
+    - diurnal_sin
+
+execution:
+  engine: "NautilusTrader"
+  venues:
+    - "hyperliquid"
+    - "okx"
+  default_leverage: 1.0
+  max_drawdown_limit: 0.08
