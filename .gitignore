@@ -1,0 +1,16 @@
+# Security & Credentials
+.env
+*.env
+secrets.yaml
+credentials.json
+private_key*
+*.key
+*.pem
+
+# Data and Cache
+data/
+*.parquet
+*.zst
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
